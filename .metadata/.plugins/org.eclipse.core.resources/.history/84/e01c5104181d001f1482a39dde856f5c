@@ -1,0 +1,23 @@
+package com.example.demo.RestfulServices.User;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class UserServiceController {
+
+	@Autowired
+	private UserDao userDao;
+	
+	public UserServiceController(UserDao userDao) {
+		super();
+		this.userDao = userDao;
+	}
+
+	public List<User>retriveAllUsers(){
+		return userDao.getAllUsers();
+	}
+	
+}

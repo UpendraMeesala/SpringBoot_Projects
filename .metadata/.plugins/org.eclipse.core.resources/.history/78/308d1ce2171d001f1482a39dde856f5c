@@ -1,0 +1,5 @@
+package com.example.demo.RestfulServices.User;
+
+public class UserServiceController {
+
+}

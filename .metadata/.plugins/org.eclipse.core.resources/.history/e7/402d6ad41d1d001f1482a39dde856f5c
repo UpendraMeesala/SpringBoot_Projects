@@ -1,0 +1,44 @@
+package com.example.demo.RestfulServices.User;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Predicate;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class UserDao {
+
+	public static List<User> users = new ArrayList<>();
+	public static int count = 0;
+	
+	static {
+		users.add(new User(count++,"Upendra",LocalDate.now().minusYears(28)));
+		users.add(new User(count++,"Dhanush",LocalDate.now().minusYears(25)));
+		users.add(new User(count++,"Kishore",LocalDate.now().minusYears(22)));
+	}
+	
+	
+	
+	public List<User>getAllUsers(){
+		return users;
+	}
+	
+	public User getUser(int Id){
+		/*
+		 * for(User user : users) { int id =user.getId(); if(id == Id) { return user; }
+		 * } return null;
+		 */
+		
+		Predicate<? super User> predicate = user -> user.getId() == Id;
+		return users.stream().filter(predicate).findFirst().get();
+	}
+
+	public void saveUser(User user) {
+		user.setId(count++);
+		users.add(user);
+		
+	}
+	
+}

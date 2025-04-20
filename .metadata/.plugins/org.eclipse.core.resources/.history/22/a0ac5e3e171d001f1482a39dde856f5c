@@ -1,0 +1,20 @@
+package com.example.demo.RestfulServices.User;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.stereotype.Component;
+
+@Component
+public class UserDao {
+
+	public static List<User> user = new ArrayList<>();
+	
+	static {
+		user.add(new User(1,"Upendra",LocalDate.now().minusYears(28)));
+		user.add(new User(2,"Dhanush",LocalDate.now().minusYears(25)));
+		user.add(new User(1,"Kishore",LocalDate.now().minusYears(22)));
+	}
+	
+}
